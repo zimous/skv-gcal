@@ -221,7 +221,20 @@ async function generateICS() {
             return null;
         }
         
-        return value;
+        // The ics library already adds basic headers, so we need to replace them with our custom ones
+        // Remove the default headers and add our custom ones
+        const eventsOnly = value.replace(/BEGIN:VCALENDAR[\s\S]*?BEGIN:VEVENT/, 'BEGIN:VEVENT');
+        const calendarContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SKV C//Floorball Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:${CALENDAR_NAME}
+X-WR-CALDESC:SKV C Floorball Team Calendar
+X-WR-TIMEZONE:${TIMEZONE}
+${eventsOnly}`;
+        
+        return calendarContent;
     } catch (error) {
         console.error('Error generating ICS:', error.message);
         // Create a fallback ICS with sample event
@@ -242,7 +255,21 @@ async function generateICS() {
             console.error('Error creating fallback ICS:', icsError);
             return null;
         }
-        return value;
+        
+        // The ics library already adds basic headers, so we need to replace them with our custom ones
+        // Remove the default headers and add our custom ones
+        const eventsOnly = value.replace(/BEGIN:VCALENDAR[\s\S]*?BEGIN:VEVENT/, 'BEGIN:VEVENT');
+        const calendarContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SKV C//Floorball Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:${CALENDAR_NAME}
+X-WR-CALDESC:SKV C Floorball Team Calendar
+X-WR-TIMEZONE:${TIMEZONE}
+${eventsOnly}`;
+        
+        return calendarContent;
     }
 }
 
@@ -260,23 +287,13 @@ async function main() {
             process.exit(1);
         }
         
-        // Write ICS file
+        // Write ICS file with proper calendar headers
         await fs.writeFile('calendar.ics', icsContent);
         console.log('ICS file generated successfully: calendar.ics');
         
-        // Also create a version with proper headers for GitHub Pages
-        const fullICSContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//SKV C//Floorball Calendar//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-X-WR-CALNAME:${CALENDAR_NAME}
-X-WR-CALDESC:SKV C Floorball Team Calendar
-X-WR-TIMEZONE:${TIMEZONE}
-${icsContent}END:VCALENDAR`;
-        
-        await fs.writeFile('calendar-full.ics', fullICSContent);
-        console.log('Full ICS file generated: calendar-full.ics');
+        // Also create a backup version
+        await fs.writeFile('calendar-full.ics', icsContent);
+        console.log('Backup ICS file generated: calendar-full.ics');
         
         console.log('ICS generation completed successfully!');
         
