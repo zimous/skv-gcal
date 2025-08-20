@@ -21,9 +21,7 @@ async function fetchXMLData() {
         });
         
         console.log('Response status:', response.status);
-        console.log('Response headers:', response.headers);
         console.log('Response data length:', response.data.length);
-        console.log('First 500 characters of response:', response.data.substring(0, 500));
         
         const parser = new xml2js.Parser({ 
             explicitArray: false,
@@ -31,13 +29,12 @@ async function fetchXMLData() {
             mergeAttrs: true
         });
         const result = await parser.parseStringPromise(response.data);
-        console.log('Parsed XML structure:', JSON.stringify(result, null, 2).substring(0, 1000));
+        console.log('Parsed XML structure keys:', Object.keys(result || {}));
         return result;
     } catch (error) {
         console.error('Error fetching XML data:', error.message);
         if (error.response) {
             console.error('Response status:', error.response.status);
-            console.error('Response data:', error.response.data);
         }
         throw error;
     }
@@ -48,159 +45,128 @@ function convertToICSEvents(xmlData) {
     const events = [];
     
     console.log('Converting XML data to ICS events...');
-    console.log('XML data keys:', Object.keys(xmlData || {}));
     
-    // Try different possible XML structures
-    let eventData = null;
-    
-    // Structure 1: xmlData.data.event
-    if (xmlData && xmlData.data && xmlData.data.event) {
-        console.log('Found events in xmlData.data.event');
-        eventData = xmlData.data.event;
-    }
-    // Structure 2: xmlData.event
-    else if (xmlData && xmlData.event) {
-        console.log('Found events in xmlData.event');
-        eventData = xmlData.event;
-    }
-    // Structure 3: xmlData.events
-    else if (xmlData && xmlData.events) {
-        console.log('Found events in xmlData.events');
-        eventData = xmlData.events;
-    }
-    // Structure 4: xmlData itself might be the event array
-    else if (xmlData && Array.isArray(xmlData)) {
-        console.log('XML data is an array of events');
-        eventData = xmlData;
-    }
-    else {
-        console.log('No events found in XML structure. Available keys:', Object.keys(xmlData || {}));
-        // Create a sample event for testing
-        console.log('Creating sample event for testing...');
-        const sampleEvent = {
-            start: [2025, 1, 20, 14, 0], // January 20, 2025 at 2:00 PM
-            duration: { minutes: 90 },
-            title: `${CALENDAR_NAME} - Sample Match`,
-            description: 'Sample floorball match for testing',
-            location: 'Floorball Arena',
-            status: 'CONFIRMED',
-            busyStatus: 'BUSY',
-            organizer: { name: CALENDAR_NAME, email: 'noreply@skv-calendar.com' }
-        };
-        events.push(sampleEvent);
-        return events;
-    }
-    
-    if (!eventData) {
-        console.log('No event data found, creating sample event');
-        const sampleEvent = {
-            start: [2025, 1, 20, 14, 0],
-            duration: { minutes: 90 },
-            title: `${CALENDAR_NAME} - Sample Match`,
-            description: 'Sample floorball match for testing',
-            location: 'Floorball Arena',
-            status: 'CONFIRMED',
-            busyStatus: 'BUSY',
-            organizer: { name: CALENDAR_NAME, email: 'noreply@skv-calendar.com' }
-        };
-        events.push(sampleEvent);
-        return events;
-    }
-    
-    const eventList = Array.isArray(eventData) ? eventData : [eventData];
-    console.log(`Processing ${eventList.length} events`);
-    
-    eventList.forEach((event, index) => {
-        try {
-            console.log(`Processing event ${index}:`, JSON.stringify(event, null, 2));
-            const eventData = extractEventData(event);
-            if (eventData) {
-                events.push(eventData);
-                console.log(`Successfully processed event ${index}`);
-            } else {
-                console.log(`Failed to process event ${index}`);
+    // The XML structure is: xmlData.matches.match[]
+    if (xmlData && xmlData.matches && xmlData.matches.match) {
+        const matchList = Array.isArray(xmlData.matches.match) ? xmlData.matches.match : [xmlData.matches.match];
+        console.log(`Found ${matchList.length} matches in XML data`);
+        
+        matchList.forEach((match, index) => {
+            try {
+                console.log(`Processing match ${index + 1}/${matchList.length}:`, match.home_team, 'vs', match.away_team);
+                const eventData = extractMatchData(match);
+                if (eventData) {
+                    events.push(eventData);
+                    console.log(`Successfully processed match ${index + 1}`);
+                } else {
+                    console.log(`Failed to process match ${index + 1}`);
+                }
+            } catch (error) {
+                console.error(`Error processing match ${index + 1}:`, error.message);
             }
-        } catch (error) {
-            console.error(`Error processing event ${index}:`, error.message);
+        });
+    } else {
+        console.log('No matches found in XML structure. Available keys:', Object.keys(xmlData || {}));
+        if (xmlData && xmlData.matches) {
+            console.log('Matches object keys:', Object.keys(xmlData.matches));
         }
-    });
+    }
     
     return events;
 }
 
-// Function to extract event data from XML event object
-function extractEventData(event) {
+// Function to extract match data from XML match object
+function extractMatchData(match) {
     try {
-        console.log('Extracting event data from:', event);
+        console.log('Extracting match data from:', {
+            home_team: match.home_team,
+            away_team: match.away_team,
+            date: match.date,
+            time: match.time,
+            arena_name: match.arena_name
+        });
         
-        // Try different ways to get the event string
-        let eventString = null;
+        // Check if this is a SKV C match (either home or away)
+        // The team name is "TJ Sokol Královské Vinohrady C"
+        const isSKVMatch = match.home_team && match.home_team.includes('TJ Sokol Královské Vinohrady C') || 
+                          match.away_team && match.away_team.includes('TJ Sokol Královské Vinohrady C');
         
-        if (typeof event === 'string') {
-            eventString = event;
-        } else if (event.$) {
-            eventString = event.$;
-        } else if (event.text) {
-            eventString = event.text;
-        } else if (event.value) {
-            eventString = event.value;
-        } else if (event.data) {
-            eventString = event.data;
+        if (!isSKVMatch) {
+            console.log('Not a SKV match, skipping');
+            return null;
+        }
+        
+        console.log('Found SKV match!');
+        
+        // Parse date and time - try different possible field names
+        let matchDate, matchTime;
+        
+        // Try different possible date/time field combinations
+        if (match.match_datetime && match.match_time) {
+            matchDate = match.match_datetime;
+            matchTime = match.match_time;
+        } else if (match.date && match.time) {
+            matchDate = match.date;
+            matchTime = match.time;
+        } else if (match.match_date && match.match_time) {
+            matchDate = match.match_date;
+            matchTime = match.match_time;
+        } else if (match.start_date && match.start_time) {
+            matchDate = match.start_date;
+            matchTime = match.start_time;
+        } else if (match.game_date && match.game_time) {
+            matchDate = match.game_date;
+            matchTime = match.game_time;
         } else {
-            console.log('Could not extract event string, using event object as is');
-            // Try to create event from object properties
-            if (event.date && event.time) {
-                const dateTime = new Date(`${event.date} ${event.time}`);
-                return {
-                    start: [dateTime.getFullYear(), dateTime.getMonth() + 1, dateTime.getDate(), dateTime.getHours(), dateTime.getMinutes()],
-                    duration: { minutes: 90 },
-                    title: event.title || `${CALENDAR_NAME} Match`,
-                    description: event.description || 'Floorball match',
-                    location: event.location || 'Floorball Arena',
-                    status: 'CONFIRMED',
-                    busyStatus: 'BUSY',
-                    organizer: { name: CALENDAR_NAME, email: 'noreply@skv-calendar.com' }
-                };
-            }
+            // Log all available fields to debug
+            console.log('Available match fields:', Object.keys(match));
+            console.log('No date/time found in match data');
             return null;
         }
         
-        if (!eventString || typeof eventString !== 'string') {
-            console.log('Event string is not valid:', eventString);
+        console.log('Match date/time:', matchDate, matchTime);
+        
+        // Parse the date and time
+        // Handle the case where match_datetime contains both date and time
+        let dateTime;
+        if (matchDate && matchDate.includes(' ')) {
+            // match_datetime contains both date and time
+            dateTime = new Date(matchDate);
+        } else if (matchDate && matchTime) {
+            // Separate date and time fields
+            dateTime = new Date(`${matchDate} ${matchTime}`);
+        } else {
+            console.log('Invalid date/time format');
             return null;
         }
         
-        console.log('Processing event string:', eventString);
-        
-        // Split the event string to extract components
-        const parts = eventString.split(/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/);
-        if (parts.length < 2) {
-            console.log('Could not parse date/time from event string');
+        if (isNaN(dateTime.getTime())) {
+            console.log('Invalid date/time format');
             return null;
         }
         
-        const dateTimeStr = parts[1]; // "2025-09-14 09:30:00"
-        const remaining = parts[2] || ''; // Rest of the string
-        
-        console.log('Date/time string:', dateTimeStr);
-        console.log('Remaining string:', remaining);
-        
-        // Parse date and time
-        const [datePart, timePart] = dateTimeStr.split(' ');
-        const [year, month, day] = datePart.split('-').map(Number);
-        const [hour, minute] = timePart.split(':').map(Number);
+        const year = dateTime.getFullYear();
+        const month = dateTime.getMonth() + 1; // JavaScript months are 0-indexed
+        const day = dateTime.getDate();
+        const hour = dateTime.getHours();
+        const minute = dateTime.getMinutes();
         
         console.log('Parsed date:', { year, month, day, hour, minute });
         
-        // Extract team names from the remaining string
-        const teamMatch = remaining.match(/([A-Za-z\s]+?)(\d{5,})/);
-        let title = CALENDAR_NAME;
-        let description = '';
+        // Create event title and description
+        let title, description;
         
-        if (teamMatch) {
-            const teamName = teamMatch[1].trim();
-            title = `${CALENDAR_NAME} vs ${teamName}`;
-            description = `Floorball match: ${teamName}`;
+        if (match.home_team && match.away_team) {
+            title = `${match.home_team} vs ${match.away_team}`;
+            description = `Floorball match: ${match.home_team} vs ${match.away_team}`;
+        } else {
+            title = `${CALENDAR_NAME} Match`;
+            description = 'Floorball match';
+        }
+        
+        // Add arena information if available
+        if (match.arena_name) {
+            description += `\nVenue: ${match.arena_name}`;
         }
         
         // Create ICS event
@@ -209,7 +175,7 @@ function extractEventData(event) {
             duration: { minutes: 90 }, // Default 90 minutes for floorball matches
             title: title,
             description: description,
-            location: 'Floorball Arena', // Default location
+            location: match.arena_name || 'Floorball Arena',
             status: 'CONFIRMED',
             busyStatus: 'BUSY',
             organizer: { name: CALENDAR_NAME, email: 'noreply@skv-calendar.com' }
@@ -218,7 +184,7 @@ function extractEventData(event) {
         console.log('Created ICS event:', icsEvent);
         return icsEvent;
     } catch (error) {
-        console.error('Error extracting event data:', error.message);
+        console.error('Error extracting match data:', error.message);
         return null;
     }
 }
@@ -230,8 +196,20 @@ async function generateICS() {
         const events = convertToICSEvents(xmlData);
         
         if (events.length === 0) {
-            console.log('No events found in XML data');
-            return null;
+            console.log('No SKV matches found in XML data');
+            // Create a sample event for testing
+            console.log('Creating sample event for testing...');
+            const sampleEvent = {
+                start: [2025, 1, 20, 14, 0],
+                duration: { minutes: 90 },
+                title: `${CALENDAR_NAME} - Sample Match`,
+                description: 'Sample floorball match for testing',
+                location: 'Floorball Arena',
+                status: 'CONFIRMED',
+                busyStatus: 'BUSY',
+                organizer: { name: CALENDAR_NAME, email: 'noreply@skv-calendar.com' }
+            };
+            events.push(sampleEvent);
         }
         
         console.log(`Found ${events.length} events`);
