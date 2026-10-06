@@ -7,12 +7,312 @@ X-WR-CALNAME:SKV C
 X-WR-CALDESC:SKV C Floorball Team Calendar
 X-WR-TIMEZONE:Europe/Prague
 BEGIN:VEVENT
-UID:Fc4GORmLSB0RI6jNG2Deq
-SUMMARY:SKV C - Sample Match
-DTSTAMP:20261005T233200Z
-DTSTART:20250120T140000Z
-DESCRIPTION:Sample floorball match for testing
-LOCATION:Floorball Arena
+UID:vvLTJjtjWNuoFu-xXrf_s
+SUMMARY:TJ Sokol Dobříš vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20260913T090000Z
+DESCRIPTION:Floorball match: TJ Sokol Dobříš vs TJ Sokol Královské Vinohrad
+	y C\nVenue: TJ Sokol Vinohrady
+LOCATION:TJ Sokol Vinohrady
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:kK9vAyaJ1RpO90uoZGrze
+SUMMARY:TJ Sokol Královské Vinohrady C vs FAT PIPE Traverza
+DTSTAMP:20261006T040900Z
+DTSTART:20260913T150000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs FAT PIPE Tra
+	verza\nVenue: TJ Sokol Vinohrady
+LOCATION:TJ Sokol Vinohrady
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:aLcspzIdkZkJJuMY15vzu
+SUMMARY:TJ Sokol Královské Vinohrady C vs Tatran Střešovice B
+DTSTAMP:20261006T040900Z
+DTSTART:20260926T090000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs Tatran Střeš
+	ovice B\nVenue: SH Neratovice
+LOCATION:SH Neratovice
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:J999igrCbvxRSQlsvVS6z
+SUMMARY:ACEMA Sparta Praha B vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20260926T120000Z
+DESCRIPTION:Floorball match: ACEMA Sparta Praha B vs TJ Sokol Královské Vin
+	ohrady C\nVenue: SH Neratovice
+LOCATION:SH Neratovice
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:mHf5JCdMiBdMXTL-kwurm
+SUMMARY:TJ Sokol Královské Vinohrady C vs SK Alien Nation Černošice
+DTSTAMP:20261006T040900Z
+DTSTART:20261011T090000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs SK Alien Nat
+	ion Černošice\nVenue: Sport Eden Beroun
+LOCATION:Sport Eden Beroun
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:deWWmNgNBXTadPa5tePkr
+SUMMARY:Florbal Neratovice vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20261011T120000Z
+DESCRIPTION:Floorball match: Florbal Neratovice vs TJ Sokol Královské Vinoh
+	rady C\nVenue: Sport Eden Beroun
+LOCATION:Sport Eden Beroun
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:PCwr1QauW3ZAXpgwKX2Lr
+SUMMARY:SSK Future vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20261025T000000Z
+DESCRIPTION:Floorball match: SSK Future vs TJ Sokol Královské Vinohrady C\n
+	Venue: Sport Eden Beroun
+LOCATION:Sport Eden Beroun
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:nWFvi2BhWOLg3KSrftlGv
+SUMMARY:TJ Sokol Královské Vinohrady C vs Florbalová akademie MB
+DTSTAMP:20261006T040900Z
+DTSTART:20261025T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs Florbalová a
+	kademie MB\nVenue: Sport Eden Beroun
+LOCATION:Sport Eden Beroun
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:3peOoXD6LUATYBa6CG87-
+SUMMARY:TJ Sokol Královské Vinohrady C vs SK Dvojka Praha
+DTSTAMP:20261006T040900Z
+DTSTART:20261107T090000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs SK Dvojka Pr
+	aha\nVenue: TJ Radlice
+LOCATION:TJ Radlice
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:GmLJPenA9BClP4Hi_ms4u
+SUMMARY:AMIX Florbal MB U23 B vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20261107T120000Z
+DESCRIPTION:Floorball match: AMIX Florbal MB U23 B vs TJ Sokol Královské Vi
+	nohrady C\nVenue: TJ Radlice
+LOCATION:TJ Radlice
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:3jq2X5i-7YQddtUefknvT
+SUMMARY:Panthers Praha Boys vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20261121T000000Z
+DESCRIPTION:Floorball match: Panthers Praha Boys vs TJ Sokol Královské Vino
+	hrady C\nVenue: Unihoc Aréna Praha
+LOCATION:Unihoc Aréna Praha
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:e01eHZAHJt986c-2f4p-K
+SUMMARY:TJ Sokol Královské Vinohrady C vs Wizards SO DDM Praha 10 B
+DTSTAMP:20261006T040900Z
+DTSTART:20261121T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs Wizards SO D
+	DM Praha 10 B\nVenue: Unihoc Aréna Praha
+LOCATION:Unihoc Aréna Praha
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:RRxJ8JCyo_xa9OTD3VX_d
+SUMMARY:Florbalová akademie MB vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20261213T000000Z
+DESCRIPTION:Floorball match: Florbalová akademie MB vs TJ Sokol Královské V
+	inohrady C\nVenue: Nová SH Mladá Boleslav
+LOCATION:Nová SH Mladá Boleslav
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:DSk_l2owSlTf2-Qo_Yh_Y
+SUMMARY:TJ Sokol Královské Vinohrady C vs Florbal Neratovice
+DTSTAMP:20261006T040900Z
+DTSTART:20261213T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs Florbal Nera
+	tovice\nVenue: Nová SH Mladá Boleslav
+LOCATION:Nová SH Mladá Boleslav
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:9xtaKDZ5_Th9pTsFNpSvP
+SUMMARY:SK Dvojka Praha vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20270109T000000Z
+DESCRIPTION:Floorball match: SK Dvojka Praha vs TJ Sokol Královské Vinohrad
+	y C\nVenue: SH ZŠ Černošice-Mokropsy
+LOCATION:SH ZŠ Černošice-Mokropsy
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:bP5OtrlZgY4x4l3UTkf5m
+SUMMARY:TJ Sokol Královské Vinohrady C vs TJ Sokol Dobříš
+DTSTAMP:20261006T040900Z
+DTSTART:20270109T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs TJ Sokol Dob
+	říš\nVenue: SH ZŠ Černošice-Mokropsy
+LOCATION:SH ZŠ Černošice-Mokropsy
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:sYDOlntPVkE2V9b4bKCNB
+SUMMARY:FAT PIPE Traverza vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20270123T000000Z
+DESCRIPTION:Floorball match: FAT PIPE Traverza vs TJ Sokol Královské Vinohr
+	ady C\nVenue: TJ Sokol Vinohrady
+LOCATION:TJ Sokol Vinohrady
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:obkPa4J1TPPtnWWvrqZ2p
+SUMMARY:TJ Sokol Královské Vinohrady C vs ACEMA Sparta Praha B
+DTSTAMP:20261006T040900Z
+DTSTART:20270123T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs ACEMA Sparta
+	 Praha B\nVenue: TJ Sokol Vinohrady
+LOCATION:TJ Sokol Vinohrady
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:zplc-OYLY0mQd-uYYA-9u
+SUMMARY:SK Alien Nation Černošice vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20270207T000000Z
+DESCRIPTION:Floorball match: SK Alien Nation Černošice vs TJ Sokol Královsk
+	é Vinohrady C\nVenue: Nová SH Mladá Boleslav
+LOCATION:Nová SH Mladá Boleslav
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:vBi-J8f2B0awMitQ_JjvM
+SUMMARY:TJ Sokol Královské Vinohrady C vs Panthers Praha Boys
+DTSTAMP:20261006T040900Z
+DTSTART:20270207T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs Panthers Pra
+	ha Boys\nVenue: Nová SH Mladá Boleslav
+LOCATION:Nová SH Mladá Boleslav
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:HA3yTEMK3zEGvmPpM1TJd
+SUMMARY:Tatran Střešovice B vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20270228T000000Z
+DESCRIPTION:Floorball match: Tatran Střešovice B vs TJ Sokol Královské Vino
+	hrady C\nVenue: Unihoc Aréna Praha
+LOCATION:Unihoc Aréna Praha
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:WHYkvSBDHKdKZnOQL2Z_c
+SUMMARY:TJ Sokol Královské Vinohrady C vs AMIX Florbal MB U23 B
+DTSTAMP:20261006T040900Z
+DTSTART:20270228T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs AMIX Florbal
+	 MB U23 B\nVenue: Unihoc Aréna Praha
+LOCATION:Unihoc Aréna Praha
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:5FjD13zNb7md51NNgjnms
+SUMMARY:Wizards SO DDM Praha 10 B vs TJ Sokol Královské Vinohrady C
+DTSTAMP:20261006T040900Z
+DTSTART:20270418T000000Z
+DESCRIPTION:Floorball match: Wizards SO DDM Praha 10 B vs TJ Sokol Královsk
+	é Vinohrady C\nVenue: Arena Barrandov
+LOCATION:Arena Barrandov
+STATUS:CONFIRMED
+ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+DURATION:PT90M
+END:VEVENT
+BEGIN:VEVENT
+UID:28we7_moPplCHW4OkhNov
+SUMMARY:TJ Sokol Královské Vinohrady C vs SSK Future
+DTSTAMP:20261006T040900Z
+DTSTART:20270418T000000Z
+DESCRIPTION:Floorball match: TJ Sokol Královské Vinohrady C vs SSK Future\n
+	Venue: Arena Barrandov
+LOCATION:Arena Barrandov
 STATUS:CONFIRMED
 ORGANIZER;CN=SKV C:mailto:noreply@skv-calendar.com
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
